@@ -11,7 +11,7 @@ const error = (error, message) => {
             name = "Internal Server Error";
             break;
     }
-    return { error, code, message };
+    return { error, name, message };
 }
 
 export default error;
