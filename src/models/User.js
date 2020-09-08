@@ -20,8 +20,11 @@ const userSchema = new Schema({
         },
         tokens: [
             {
-                type: String
-            }
+                token: {
+                    type: String,
+                    required: false,
+                },
+            },
         ]
     }
 });

@@ -4,6 +4,6 @@ import pingController from "../controllers/ping";
 
 
 const ping = express.Router();
-ping.get('/ping', pingController.ping);
+ping.get('/', pingController.ping);
 
 export default ping;
