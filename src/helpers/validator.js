@@ -17,7 +17,7 @@ const validator = {
                 validator.total = validator.total || total;
                 validator.usingOr = false;
             } else {
-                validator.total = validator.total && total;
+                validator.total = (validator.total && total);
             }
         }
     },
@@ -130,8 +130,10 @@ const validator = {
 
     check: (error) => {
         if (!validator.total) {
+            validator.total = true;
             throw new Error(error);
         }
+        validator.total = true;
         return validator;
     }
 };
