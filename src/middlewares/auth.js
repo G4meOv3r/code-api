@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 
 import User from "../models/User"
 
-const auth = asyncHandler(async (req, res, next) => {
+const catching = asyncHandler(async (req, res, next) => {
 
     let token = req.header("Authorization");
 
@@ -40,4 +40,39 @@ const auth = asyncHandler(async (req, res, next) => {
 
 })
 
-export default auth;
+const through = asyncHandler(async (req, res, next) => {
+
+    let token = req.header("Authorization");
+
+    validator.set
+        .value(token)
+        .is.exist()
+        .is.string();
+    if (!validator.total) {
+        next();
+    }
+    token = token.replace('Bearer ', '');
+
+    try {
+
+        const data = jwt.verify(token, process.env.JWT_KEY);
+        const user = await User.findOne({ _id: data._id, 'personal.tokens.token': token });
+
+        if (!user) {
+            res.status(401).json({ error: 401, name: "Unauthorized", message: "bad authorization bearer" });
+        }
+        req.user = user;
+        req.token = token;
+
+        return next();
+
+    } catch (error) {
+        return res.status(500).json(httpError(500, error.message));
+    }
+
+})
+
+export default {
+    catching,
+    through
+};
