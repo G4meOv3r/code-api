@@ -6,6 +6,7 @@ const validator = {
     set: {
         value: (value) => {
             validator.value = value;
+            validator.total = true;
             return validator;
         },
         total: (total) => {
@@ -60,6 +61,11 @@ const validator = {
 
         empty: () => {
             validator.set.total(!validator.value.length);
+            return validator;
+        },
+
+        length: (value) => {
+            validator.set.total(validator.value.length == value);
             return validator;
         },
 
