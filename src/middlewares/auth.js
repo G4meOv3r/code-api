@@ -49,11 +49,12 @@ const through = asyncHandler(async (req, res, next) => {
         .is.exist()
         .is.string();
     if (!validator.total) {
-        next();
+        return next();
     }
-    token = token.replace('Bearer ', '');
 
     try {
+
+        token = token.replace('Bearer ', '');
 
         const data = jwt.verify(token, process.env.JWT_KEY);
         const user = await User.findOne({ _id: data._id, 'personal.tokens.token': token });
