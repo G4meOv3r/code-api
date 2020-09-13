@@ -42,5 +42,17 @@ userSchema.pre('save', async function (next) {
     }
 });
 
+userSchema.methods.public = function () {
+    const user = this;
+
+    return user.personal;
+}
+
+userSchema.methods.private = function () {
+    const user = this;
+
+    return user;
+}
+
 const User = mongoose.model('User', userSchema);
 export default User; 
