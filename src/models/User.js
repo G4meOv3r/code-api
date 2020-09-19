@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 
 
 const Schema = mongoose.Schema;
-const userSchema = new Schema({
+const schema = new Schema({
     personal: {
         name: {
             type: String
@@ -29,7 +29,7 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.pre('save', async function (next) {
+schema.pre('save', async function (next) {
     try {
         const user = this;
         if (user.isModified('personal.password')) {
@@ -42,17 +42,17 @@ userSchema.pre('save', async function (next) {
     }
 });
 
-userSchema.methods.public = function () {
+schema.methods.public = function () {
     const user = this;
 
     return user.personal;
 }
 
-userSchema.methods.private = function () {
+schema.methods.private = function () {
     const user = this;
 
     return user;
 }
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', schema);
 export default User; 
