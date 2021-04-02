@@ -1,17 +1,11 @@
 const error = (error, message) => {
-    let name = "";
-    switch (error) {
-        case 400:
-            name = "Bad Request";
-            break;
-        case 401:
-            name = "Unauthorized";
-            break;
-        case 500:
-            name = "Internal Server Error";
-            break;
+    const parser = {
+        400: 'Bad Request',
+        401: 'Unauthorized',
+        500: 'Internal Server Error'
     }
-    return { error, name, message };
+    const name = parser.error
+    return { error, name, message }
 }
 
-export default error;
+export default error

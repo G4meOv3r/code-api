@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import app from './index';
+import mongoose from 'mongoose'
+import httpServer from './index'
 
 mongoose.connect(
     process.env.NODE_ENV === 'test'
@@ -9,17 +9,18 @@ mongoose.connect(
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useCreateIndex: true,
-        useFindAndModify: true,
+        useFindAndModify: true
     }
-);
+)
 
 mongoose.connection.once('open', () => {
-    const port = process.env.PORT || 3012;
-    app.listen(port, () => {
-        console.log(`App started at port ${port}`);
-    });
-});
+    const port = process.env.PORT || 3012
+
+    httpServer.listen(port, () => {
+        console.log(`App started at port ${port}`)
+    })
+})
 
 mongoose.connection.on('error', (err) => {
-    console.log(err);
-});
+    console.log(err)
+})

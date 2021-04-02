@@ -1,17 +1,26 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
+import { subscribable } from '../helpers/subscribable'
 
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs'
 
-
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
 const schema = new Schema({
-    personal: {
-        name: {
-            type: String
-        },
-        lastname: {
-            type: String
-        },
+    invites: {
+        friends: [
+            {
+                from: { type: mongoose.ObjectId },
+                date: { type: Date, default: Date.now }
+            }
+        ],
+        lobbies: [
+            {
+                from: { type: mongoose.ObjectId },
+                date: { type: Date, default: Date.now }
+            }
+        ]
+    },
+
+    auth: {
         email: {
             type: String
         },
@@ -22,37 +31,59 @@ const schema = new Schema({
             {
                 token: {
                     type: String,
-                    required: false,
-                },
-            },
+                    required: false
+                }
+            }
         ]
-    }
-});
+    },
+
+    personal: {
+        nickname: {
+            type: String
+        },
+        name: {
+            type: String,
+            default: ''
+        },
+        lastName: {
+            type: String,
+            default: ''
+        },
+        awards: {
+            type: Array,
+            default: []
+        },
+        status: {
+            type: Number,
+            default: 0
+        }
+    },
+
+    friends: [
+        {
+            type: mongoose.ObjectId
+        }
+    ]
+})
 
 schema.pre('save', async function (next) {
-    try {
-        const user = this;
-        if (user.isModified('personal.password')) {
-            const salt = await bcrypt.genSalt(10);
-            user.personal.password = await bcrypt.hash(user.personal.password, salt);
-        }
-        next();
-    } catch (error) {
-        throw error;
+    const user = this
+    if (user.isModified('auth.password')) {
+        const salt = await bcrypt.genSalt(10)
+        user.auth.password = await bcrypt.hash(user.auth.password, salt)
     }
-});
+    next()
+})
 
 schema.methods.public = function () {
-    const user = this;
+    const user = this
 
-    return user.personal;
+    return user.personal
 }
 
 schema.methods.private = function () {
-    const user = this;
-
-    return user;
+    return this
 }
 
-const User = mongoose.model('User', schema);
-export default User; 
+const User = mongoose.model('User', schema)
+export default subscribable(User)

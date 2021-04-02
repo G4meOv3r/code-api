@@ -1,5 +1,5 @@
-import user from "../auth/user";
+import user from '../auth/user'
 
 export default {
     user: user
-};
+}

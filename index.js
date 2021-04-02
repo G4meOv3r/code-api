@@ -1,20 +1,32 @@
-import express from 'express';
+import express from 'express'
+import socket from 'socket.io'
+import http from 'http'
+import path from 'path'
 
-import bodyParser from 'body-parser';
+import cors from 'cors'
+import bodyParser from 'body-parser'
 
-import pingRouter from './src/routes/ping';
-import authRouter from './src/routes/auth';
-import profileRouter from './src/routes/profile';
-import lobbyRouter from './src/routes/lobby';
+import authRouter from './src/routes/auth'
+import profileRouter from './src/routes/profile'
 
-const app = express();
+import onConnection from './src/events'
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// express
+const app = express()
 
-app.use("/ping", pingRouter);
-app.use("/auth", authRouter);
-app.use("/profile", profileRouter);
-app.use("/lobby", lobbyRouter);
+app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
-export default app;
+app.use('/auth', authRouter)
+app.use('/profile', profileRouter)
+
+app.use(express.static(path.join(__dirname, 'public')))
+const httpServer = new http.Server(app)
+
+// socket.io
+new socket.Server(httpServer, { cors: { origin: '*' } })
+    .use((socket, next) => { console.log('middleware'); next() })
+    .on('connection', onConnection)
+
+export default httpServer
