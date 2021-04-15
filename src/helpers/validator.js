@@ -1,3 +1,5 @@
+import mongoose from 'mongoose'
+
 const validator = {
     value: null,
     usingNot: false,
@@ -25,7 +27,7 @@ const validator = {
 
     is: {
         array: () => {
-            validator.set.total(validator.value.isArray())
+            validator.set.total(Array.isArray(validator.value))
             return validator
         },
 
@@ -75,14 +77,19 @@ const validator = {
             return validator
         },
 
+        ObjectId: () => {
+            validator.set.total(mongoose.Types.ObjectId.isValid(validator.value))
+            return validator
+        },
+
         string: () => {
             validator.set.total(typeof validator.value === 'string')
             return validator
         },
 
         in: {
-            ranges: (ranges) => {
-                let result = false
+            ranges: (...ranges) => {
+                let result = true
                 ranges.forEach((range) => {
                     let l = true
                     let g = true
@@ -92,25 +99,24 @@ const validator = {
                         }
                     }
                     if (range.le) {
-                        if (validator.value > range.lt) {
+                        if (validator.value > range.le) {
                             l = false
                         }
                     }
                     if (range.gt) {
-                        if (validator.value <= range.lt) {
+                        if (validator.value <= range.gt) {
                             g = false
                         }
                     }
                     if (range.ge) {
-                        if (validator.value < range.lt) {
+                        if (validator.value < range.ge) {
                             g = false
                         }
                     }
-                    if (l && g && !result) {
-                        result = true
-                    }
+                    result = l && g && result
                 })
                 validator.set.total(result)
+                return validator
             },
             array: (array) => {
                 validator.set.total(array.includes(validator.value))

@@ -1,16 +1,21 @@
 export const subscribable = (model) => {
     model.subscribers = {}
 
-    model.watch().on('change', (data) => {
-        for (const sub in model.subscribers) {
-            console.log(sub, data)
+    model.watch().on('change', async (data) => {
+        if (!data.fullDocument) {
+            data.fullDocument = await model.findOne({ _id: data.documentKey })
+        }
+        for (const id in model.subscribers) {
+            model.subscribers[id](data)
         }
     })
 
     model.subscribe = (handler) => {
-        console.log(model.subscribers)
-        model.subscribers[Date.now()] = handler
-        console.log(`subscribe on ${model}`)
+        const id = Date.now()
+        model.subscribers[id] = handler
+        return () => {
+            delete model.subscribers[id]
+        }
     }
     return model
 }

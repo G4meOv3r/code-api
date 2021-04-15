@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon --exec node -r dotenv/config -r @babel/register app.js"
+    "watch": "nodemon --exec node -r dotenv/config -r @babel/register app.js",
+    "start": "node -r dotenv/config -r @babel/register app.js"
   },
   "author": "",
   "license": "ISC",

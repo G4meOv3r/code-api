@@ -8,8 +8,13 @@ import bodyParser from 'body-parser'
 
 import authRouter from './src/routes/auth'
 import profileRouter from './src/routes/profile'
+import contestRouter from './src/routes/contest'
+import taskRouter from './src/routes/task'
+import packageRouter from './src/routes/package'
 
-import onConnection from './src/events'
+import authMiddleware from './src/middlewares/auth/auth'
+
+import onConnection from './src/events/connection'
 
 // express
 const app = express()
@@ -20,13 +25,16 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/auth', authRouter)
 app.use('/profile', profileRouter)
+app.use('/contest', contestRouter)
+app.use('/task', taskRouter)
+app.use('/package', packageRouter)
 
 app.use(express.static(path.join(__dirname, 'public')))
 const httpServer = new http.Server(app)
 
 // socket.io
 new socket.Server(httpServer, { cors: { origin: '*' } })
-    .use((socket, next) => { console.log('middleware'); next() })
+    .use(authMiddleware.user.ws)
     .on('connection', onConnection)
 
 export default httpServer

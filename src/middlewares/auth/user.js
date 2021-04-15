@@ -59,7 +59,24 @@ const through = asyncHandler(async (req, res, next) => {
     }
 })
 
+const ws = async (socket, next) => {
+    let token = socket.handshake.auth.token
+    token = token.replace('Bearer ', '')
+
+    if (token) {
+        const data = jwt.verify(token, process.env.JWT_KEY)
+        socket.user = await User.findOne({
+            _id: data._id,
+            'auth.tokens.token': token
+        })
+        socket.token = token
+    }
+
+    return next()
+}
+
 export default {
     catching: catching,
-    through: through
+    through: through,
+    ws: ws
 }
