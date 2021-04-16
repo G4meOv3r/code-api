@@ -20,42 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49f1a287-5ee2-473a-8ad3-ee6b7be6dce2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/contests/create.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/contests/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/contests/root.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/contests/start.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/package/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/package/root.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/package/rootGet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/profile/root.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/task/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controllers/task/root.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/events/connection.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/events/contest/contest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/events/contest/contests.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/events/pacakges/package.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/events/task/task.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Contest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Package.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Task.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/contest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/package.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/task.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/avatars/605eeebefa1bd32da0777f2e.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/avatars/605eeebefa1bd32da0777f2e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/contests/connect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/contests/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/models/Searcher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/auth/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/auth/signup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/profile/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/profile/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/profile/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/profile/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/disconnect.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/lobby/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/events/lobby/subscribe.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/subscribable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/subscribable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/validator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/validator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/auth/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/auth/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/contests/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/contests/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/contests/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/contests/start.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/package/root.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/package/root.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/connection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/connection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/contest/contest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/contest/contest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/contest/contests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/contest/contests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/pacakges/package.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/pacakges/package.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/events/task/task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/events/task/task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Package.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Package.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Task.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Task.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/contest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/contest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +60,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/controllers/package" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/models" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -90,18 +71,18 @@
     <property name="ts.external.directory.path" value="C:\Program Files (x86)\idea\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\api\code\src\models" />
+      <recent name="D:\code\api\code\src\controllers\contests" />
+      <recent name="D:\code\api\code\src\controllers\package" />
+      <recent name="D:\code\api\code\src\events" />
+      <recent name="D:\code\api\code\src\controllers\profile" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\code\api\code\src\controllers\profile" />
       <recent name="D:\code\api\code\src\express" />
       <recent name="D:\code\api\code\public" />
       <recent name="D:\code\api\code\src\controllers\profile\friends" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\code\api\code\src\controllers\package" />
-      <recent name="D:\code\api\code\src\events" />
-      <recent name="D:\code\api\code\src\controllers\profile" />
-      <recent name="D:\code\api\code\src\events\task" />
-      <recent name="D:\code\api\code\src\events\contest" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -152,7 +133,8 @@
       <workItem from="1618306276312" duration="19193000" />
       <workItem from="1618393565693" duration="23088000" />
       <workItem from="1618475982731" duration="59000" />
-      <workItem from="1618476076839" duration="13591000" />
+      <workItem from="1618476076839" duration="17293000" />
+      <workItem from="1618551643746" duration="9622000" />
     </task>
     <servers />
   </component>
@@ -184,10 +166,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="722" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1280.0.1280.984@0.0.1920.1040" timestamp="1616236238700" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1618476007793">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1618551654772">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1280.0.1280.984@0.0.1920.1040" timestamp="1618476007793" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1280.0.1280.984@0.0.1920.1040" timestamp="1618551654772" />
     <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1618494410419">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

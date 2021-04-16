@@ -7,6 +7,7 @@ import controller from '../controllers/contests'
 const router = express.Router()
 router.get('/', authMiddleware.user.through, controller.root.get)
 router.get('/start', authMiddleware.user.catching, controller.start.get)
+router.get('/connect', authMiddleware.user.catching, controller.connect.get)
 router.post('/create', authMiddleware.user.catching, controller.create.post)
 
 export default router

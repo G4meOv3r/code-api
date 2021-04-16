@@ -1,5 +1,6 @@
 import create from './create'
 import start from './start'
+import connect from './connect'
 import root from './root'
 
 export default {
@@ -11,5 +12,8 @@ export default {
     },
     start: {
         get: start
+    },
+    connect: {
+        get: connect
     }
 }

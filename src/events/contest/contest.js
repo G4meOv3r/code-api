@@ -8,8 +8,7 @@ const onContestSubscribe = async (data, socket) => {
     let contest = await Contest.findOne({ _id })
 
     const unsubscribeContest = Contest.subscribe(async (data) => {
-        if (data.documentKey._id.equals(_id)) {
-            console.log(data.fullDocument)
+        if (data.documentKey._id.equals(_id) && data.documentKey.privacy.access === 0) {
             const filledTasks = await Promise.all(data.fullDocument.tasks.map(async taskId => {
                 if (taskId) {
                     const { _id, name, task } = await Task.findOne({ _id: taskId })
@@ -62,7 +61,7 @@ const onContestSubscribe = async (data, socket) => {
         }
     })
 
-    socket.on(`contest:${_id}:unsubscribe`, () => {
+    socket.once(`contest:${_id}:unsubscribe`, () => {
         unsubscribeContest()
         unsubscribePackages()
     })

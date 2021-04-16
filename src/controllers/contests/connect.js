@@ -3,9 +3,8 @@ import validator from '../../helpers/validator'
 import httpError from '../../helpers/error'
 
 import Contest from '../../models/Contest'
-import Task from '../../models/Task'
 
-const create = asyncHandler(async (req, res, next) => {
+const connect = asyncHandler(async (req, res, next) => {
     const { user } = req
     const { _id } = req.query
 
@@ -22,28 +21,23 @@ const create = asyncHandler(async (req, res, next) => {
         if (!contest) {
             return res.status(400).json(httpError(400, 'contest does not exist'))
         }
-        if (!contest.creator._id.equals(user._id)) {
-            return res.status(401).json(httpError(401, 'you must be a creator to start contest'))
+        if (contest.teams[1].members.length !== 0) {
+            return res.status(401).json(httpError(401, 'contest is full'))
         }
-        if (contest.dates.start) {
-            return res.status(401).json(httpError(401, 'contest is already started'))
+        if (contest.privacy.access !== 0) {
+            if (!user.invites.contests.reduce((accumulator, invite) => {
+                return accumulator || (invite._id === contest._id)
+            }, false)) {
+                return res.status(401).json(httpError(401, 'you must be invited'))
+            }
         }
-        const date = new Date()
-        const timeout = contest.duration * 60 * 1000
-        contest.type = 'live'
-        contest.dates.start = date
-        contest.dates.end = new Date(date.getTime() + timeout)
-        contest.tasks = await Task.getRandom(contest.tasks.length)
-        setTimeout(() => {
-            contest.type = 'past'
-            contest.save()
-        }, timeout)
+        contest.teams[1].members.push({ _id: user._id, nickname: user.personal.nickname })
+        contest.markModified('teams')
         await contest.save()
         return res.status(200).json({ _id: contest._id })
     } catch (error) {
-        console.log(error)
         return res.status(500).json(httpError(500, error.message))
     }
 })
 
-export default create
+export default connect

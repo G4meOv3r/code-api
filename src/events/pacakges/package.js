@@ -10,7 +10,7 @@ const onPackageSubscribe = async (data, socket) => {
         }
     })
 
-    socket.on(`package:${_id}:unsubscribe`, () => {
+    socket.once(`package:${_id}:unsubscribe`, () => {
         unsubscribePackages()
     })
 }

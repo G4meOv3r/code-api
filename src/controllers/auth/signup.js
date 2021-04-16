@@ -37,7 +37,7 @@ const signup = asyncHandler(async (req, res, next) => {
         const token = jwt.sign({ _id: user.id }, process.env.JWT_KEY)
         user.auth.tokens = user.auth.tokens.concat({ token })
         user.personal.nickname = email
-        await fs.copyFile('./public/images/avatars/placeholder.png', `./public/images/avatars/${user._id.toString()}.png`)
+        await fs.copyFile('./public/images/avatars/placeholder.png', `./public/images/avatars/${user._id.toString()}.png`, () => {})
 
         await user.save()
 

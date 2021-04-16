@@ -29,7 +29,7 @@ Package.subscribers[0] = async (data) => {
                 const teamNumber = contest.teams.reduce((accumulator, team, index) => {
                     return accumulator + (team.members.length !== 0 && team.members.reduce((otherAccumulator, member) => {
                         return otherAccumulator || member._id.equals(pkg.creator)
-                    })
+                    }, false)
                         ? index + 1
                         : 0
                     )

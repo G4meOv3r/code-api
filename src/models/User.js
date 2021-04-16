@@ -9,13 +9,13 @@ const schema = new Schema({
         friends: [
             {
                 from: { type: mongoose.ObjectId },
-                date: { type: Date, default: Date.now }
+                date: { type: Date }
             }
         ],
-        lobbies: [
+        contests: [
             {
-                from: { type: mongoose.ObjectId },
-                date: { type: Date, default: Date.now }
+                _id: { type: mongoose.ObjectId },
+                date: { type: Date }
             }
         ]
     },

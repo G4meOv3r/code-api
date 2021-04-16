@@ -14,7 +14,12 @@ const schema = new Schema({
             }
         }
     ],
-    tests: Number
+    tests: [
+        {
+            input: String,
+            output: String
+        }
+    ]
 })
 schema.statics.getRandom = async function (count) {
     const tasks = await this.find({})

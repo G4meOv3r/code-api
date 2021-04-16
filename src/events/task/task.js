@@ -10,7 +10,7 @@ const onTaskSubscribe = async (data, socket) => {
         }
     })
 
-    socket.on(`task:${_id}:unsubscribe`, () => {
+    socket.once(`task:${_id}:unsubscribe`, () => {
         unsubscribePackages()
     })
 }

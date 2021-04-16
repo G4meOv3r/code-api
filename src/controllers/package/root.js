@@ -21,22 +21,23 @@ const root = asyncHandler(async (req, res, next) => {
     }
 
     try {
-        const task = await Task.find({ _id })
+        const task = await Task.findOne({ _id })
         if (task) {
             const pkg = new Package({
                 creator: user._id,
                 task: _id,
                 compiler,
                 code,
-                tests: Array.from({ length: task.tests }).fill(null),
+                tests: Array.from({ length: task.tests.length }).fill({ status: null, time: null }),
                 score: null,
                 date: Date()
             })
             await pkg.save()
         } else {
-            return res.status(500).json(httpError(400, 'task does not exist'))
+            return res.status(400).json(httpError(400, 'task does not exist'))
         }
     } catch (error) {
+        console.log(error)
         return res.status(500).json(httpError(500, error.message))
     }
 })
