@@ -11,6 +11,7 @@ import profileRouter from './src/routes/profile'
 import contestRouter from './src/routes/contest'
 import taskRouter from './src/routes/task'
 import packageRouter from './src/routes/package'
+import searchRouter from './src/routes/search'
 
 import authMiddleware from './src/middlewares/auth/auth'
 
@@ -28,6 +29,7 @@ app.use('/profile', profileRouter)
 app.use('/contest', contestRouter)
 app.use('/task', taskRouter)
 app.use('/package', packageRouter)
+app.use('/search', searchRouter)
 
 app.use(express.static(path.join(__dirname, 'public')))
 const httpServer = new http.Server(app)

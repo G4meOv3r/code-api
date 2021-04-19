@@ -19,7 +19,6 @@ const rootGet = asyncHandler(async (req, res, next) => {
     try {
         const pkg = await Package.findOne({ _id })
         if (!pkg) {
-            console.log(pkg)
             return res.status(400).json(httpError(400, 'package does not exist'))
         }
         if (!pkg.creator.equals(user._id)) {

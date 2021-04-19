@@ -37,7 +37,6 @@ const root = asyncHandler(async (req, res, next) => {
             return res.status(400).json(httpError(400, 'task does not exist'))
         }
     } catch (error) {
-        console.log(error)
         return res.status(500).json(httpError(500, error.message))
     }
 })

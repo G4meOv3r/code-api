@@ -41,7 +41,6 @@ const create = asyncHandler(async (req, res, next) => {
         await contest.save()
         return res.status(200).json({ _id: contest._id })
     } catch (error) {
-        console.log(error)
         return res.status(500).json(httpError(500, error.message))
     }
 })

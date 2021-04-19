@@ -17,7 +17,6 @@ const root = asyncHandler(async (req, res, next) => {
         await user.save()
         return res.status(200).json({ success: true })
     } catch (error) {
-        console.log(error)
         return res.status(500).json(httpError(500, error.message))
     }
 })
